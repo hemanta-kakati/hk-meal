@@ -94,10 +94,10 @@ const SingleMeal = () => {
 
           <div className="col-lg-9 mx-auto">
             <div className="row mt-4 gx-5 align-items-center">
-              <div className="col-sm-6 col-xs-12 ">
+              <div className="col-sm-6 col-xs-12 mb-4">
                 <img src={thumbnail} alt={title} className="img-fluid" />
               </div>
-              <div className="col-sm-6 col-xs-12 ">
+              <div className="col-sm-6 col-xs-12 mb-4">
                 <p>
                   <span className="meta-info">Name:</span> {title}
                 </p>
