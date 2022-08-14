@@ -30,14 +30,8 @@ const AppProvider = ({ children }) => {
       const res = await fetch(url);
       const data = await res.json();
       setLoading(false);
+      // console.log(data);
       return data;
-      // if (data) {
-      //   setLoading(false);
-      //   return data;
-      // } else {
-      //   setLoading(false);
-      //   return [];
-      // }
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -49,8 +43,6 @@ const AppProvider = ({ children }) => {
     searchMeal("a");
   }, []);
 
-  useEffect(() => console.log(meals), [meals]);
-
   return (
     <AppContext.Provider
       value={{
@@ -59,6 +51,7 @@ const AppProvider = ({ children }) => {
         mealCategories,
         meals,
         searchMeal,
+        fetchData,
       }}
     >
       {children}

@@ -22,6 +22,24 @@ body {
   transition: 0.5s all;
 }
 
+.singleMeal p {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.singleMeal .instructions {
+  line-height: 1.9;
+}
+
+.meta-info {
+  padding: 8px;
+  border-radius: 5px;
+  color: var(--primaryColor);
+  /* font-weight: bold; */
+  background-color: #f5ede0;
+  margin: 0 10px 10px 0;
+}
+
 .button:hover {
   background: #e69233;
 }

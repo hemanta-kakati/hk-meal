@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "./images/logo-small.png";
 const Header = () => {
   return (
@@ -22,9 +23,13 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
+                {/* <a className="nav-link" href="#">
                   Home <span className="sr-only"></span>
-                </a>
+                </a> */}
+
+                <Link to="/" className="nav-link">
+                  Home
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
@@ -32,9 +37,9 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Pricing
-                </a>
+                <Link to="/about" className="nav-link">
+                  About
+                </Link>
               </li>
             </ul>
           </div>

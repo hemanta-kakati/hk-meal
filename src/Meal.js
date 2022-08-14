@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Meal = ({ meal }) => {
   const [isFavourite, setIsFavourite] = useState(false);
 
   const {
     idMeal: id,
-    strIngredient1: ingredient1,
-    strIngredient2: ingredient2,
-    strIngredient3: ingredient3,
-    strIngredient4: ingredient4,
-    strIngredient5: ingredient5,
-    strInstruction: instruction,
     strMeal: title,
     strMealThumb: thumbnail,
     strArea: mealType,
@@ -33,9 +28,12 @@ const Meal = ({ meal }) => {
           </div>
           <p className="card-text text-secondary">Type: {mealType}</p>
           <div className="d-flex justify-content-between align-items-center">
-            <a href="#" className="button primaryColor">
+            {/* <a href="#" className="button primaryColor">
               Details
-            </a>
+            </a> */}
+            <Link to={`meal/${id}`} className="button primaryColor">
+              Details
+            </Link>
             <div
               className="favourite-icon"
               style={{ color: "red" }}
