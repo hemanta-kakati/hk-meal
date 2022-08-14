@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
-const Meal = ({ meal }) => {
+const CategoryMeal = ({ meal }) => {
   const [isFavourite, setIsFavourite] = useState(false);
 
-  const {
-    idMeal: id,
-    strMeal: title,
-    strMealThumb: thumbnail,
-    strArea: mealType,
-    strCategory: category,
-  } = meal;
+  const { idMeal: id, strMeal: title, strMealThumb: thumbnail } = meal;
 
   return (
     <div key={id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
@@ -25,21 +19,17 @@ const Meal = ({ meal }) => {
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-center mb-3">
             <h5 className="card-title mb-0">{title}</h5>
-            <Link
-              className="btn btn-outline-warning"
-              to={`meal/category/${category}`}
-            >
-              {category}
-            </Link>
+            {/* <button className="btn btn-outline-warning">{category}</button> */}
           </div>
-          <p className="card-text text-secondary">Type: {mealType}</p>
+          {/* <p className="card-text text-secondary">Type: {mealType}</p> */}
           <div className="d-flex justify-content-between align-items-center">
             {/* <a href="#" className="button primaryColor">
               Details
             </a> */}
-            <Link to={`meal/${id}`} className="button primaryColor">
+            <Link to={`/meal/${id}`} className="button primaryColor">
               Details
             </Link>
+
             <div
               className="favourite-icon"
               style={{ color: "red" }}
@@ -58,4 +48,4 @@ const Meal = ({ meal }) => {
   );
 };
 
-export default Meal;
+export default CategoryMeal;

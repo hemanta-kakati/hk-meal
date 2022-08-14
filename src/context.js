@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 const searchMealByNameUrl =
   "https://hemanta-cors.herokuapp.com/http://themealdb.com/api/json/v1/1/search.php?s=";
 const mealCategoriesUrl = "www.themealdb.com/api/json/v1/1/categories.php";
-const filterByCatgeoryUrl =
+const filterByCatNameUrl =
   "www.themealdb.com/api/json/v1/1/filter.php?c=Seafood";
 
 const AppContext = React.createContext();
@@ -52,6 +52,7 @@ const AppProvider = ({ children }) => {
         meals,
         searchMeal,
         fetchData,
+        setMealCategories,
       }}
     >
       {children}
