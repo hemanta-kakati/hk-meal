@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+:root {
+  --bgColor: #f1f5f8;
+  --primaryColor: #ffa845;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: var(--bgColor) !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.primaryColor {
+  color: var(--primaryColor);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.button {
+  display: inline-block;
+  padding: 8px;
+  background: var(--primaryColor);
+  border-radius: 10px;
+  min-width: 60px;
+  /* text-align: center; */
+  color: rgb(255, 255, 255);
+  transition: 0.5s all;
 }
 
-.App-link {
-  color: #61dafb;
+.button:hover {
+  background: #e69233;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a.button {
+  text-decoration: none;
+}
+
+a.button:hover {
+  color: #fff;
+}
+
+.navbar {
+  box-shadow: 1px 4px 21px 0px rgba(90, 90, 90, 0.6);
+}
+
+section#searchMeal {
+  padding: 60px 0;
+}
+.searchCard {
+  /* width: 60%; */
+  padding: 40px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 8px 16px 21px -15px rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+}
+
+.searchCard #searchMealInput {
+  background-color: var(--bgColor);
+}
+
+section#meals .card {
+  box-shadow: 0px 8px 21px -7px rgba(0, 0, 0, 0.45);
+  transition: all 0.5s;
+}
+
+section#meals .card:hover {
+  box-shadow: 0px 8px 21px -7px rgba(0, 0, 0, 0.95);
+  cursor: pointer;
 }
