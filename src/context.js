@@ -12,6 +12,7 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [mealCategories, setMealCategories] = useState([]);
   const [meals, setMeals] = useState([]);
+  const [loadingMealMessage, setLoadingMealMessage] = useState("");
 
   const searchMeal = (mealName) => {
     const url = `${searchMealByNameUrl}${mealName}`;
@@ -26,6 +27,7 @@ const AppProvider = ({ children }) => {
 
   const fetchData = async (url) => {
     setLoading(true);
+
     try {
       const res = await fetch(url);
       const data = await res.json();

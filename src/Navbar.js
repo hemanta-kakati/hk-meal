@@ -6,13 +6,23 @@ const mealCategoriesUrl =
   "https://hemanta-cors.herokuapp.com/http://themealdb.com/api/json/v1/1/categories.php";
 const Navbar = () => {
   const navDropdown = useRef(null);
+  const hamburgerMenu = useRef(null);
+  const collapseMenu = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const { fetchData, setMealCategories, mealCategories } = useGlobalContext();
 
   useEffect(() => {
-    fetchData(mealCategoriesUrl).then((res) => {
-      setMealCategories(res.categories);
-    });
+    // fetchData(mealCategoriesUrl).then((res) => {
+    //   setMealCategories(res.categories);
+    // });
+    const getCategories = async () => {
+      const res = await fetch(mealCategoriesUrl);
+      const data = await res.json();
+      setMealCategories(data.categories);
+    };
+
+    getCategories();
   }, []);
 
   const handleDropdown = () => {
@@ -43,12 +53,29 @@ const Navbar = () => {
       }
     }
   };
+
+  const hamburgerMenuHandler = () => {
+    setShowHamburgerMenu(!showHamburgerMenu);
+    const element = hamburgerMenu.current;
+    showHamburgerMenu
+      ? collapseMenu.current.classList.add("collapse")
+      : collapseMenu.current.classList.remove("collapse");
+    showHamburgerMenu
+      ? element.classList.add("collapsed")
+      : element.classList.remove("collapsed");
+    element.setAttribute("aria-expanded", !showHamburgerMenu);
+    for (let i = 0; i < element.childElementCount; i++) {
+      showHamburgerMenu && element.childNodes[i].classList.add("show");
+      !showHamburgerMenu && element.childNodes[i].classList.remove("show");
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light p-3">
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to={"/"}>
           <img src={logo} alt="The meal db" />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -57,16 +84,18 @@ const Navbar = () => {
           aria-controls="navbarText"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={hamburgerMenuHandler}
+          ref={hamburgerMenu}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarText">
+        <div
+          className="collapse navbar-collapse"
+          ref={collapseMenu}
+          id="navbarText"
+        >
           <ul className="navbar-nav ms-auto">
             <li className="nav-item active">
-              {/* <a className="nav-link" href="#">
-                  Home <span className="sr-only"></span>
-                </a> */}
-
               <Link to="/" className="nav-link">
                 Home
               </Link>
@@ -77,13 +106,13 @@ const Navbar = () => {
               </a>
             </li>
             <li
-              className="nav-item dropdown"
+              className="nav-item dropdown categories"
               ref={navDropdown}
               onClick={handleDropdown}
             >
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#"
+                to={"#"}
                 id="navbarDropdown"
                 role="button"
                 data-toggle="dropdown"
@@ -91,7 +120,7 @@ const Navbar = () => {
                 aria-expanded="false"
               >
                 Categories
-              </a>
+              </Link>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 {mealCategories &&
                   mealCategories.map((cat, index) => {
@@ -106,16 +135,6 @@ const Navbar = () => {
                       </Link>
                     );
                   })}
-                {/* <a className="dropdown-item" href="#">
-                  Action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a> */}
               </div>
             </li>
             <li className="nav-item">

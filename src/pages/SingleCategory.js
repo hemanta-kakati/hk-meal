@@ -22,7 +22,7 @@ const SingleCategory = () => {
       setIsLoading(false);
     };
     getCategoryMeals(url);
-  }, []);
+  }, [name]);
   if (isLoading) {
     return (
       <div className="container">

@@ -5,14 +5,18 @@ import Meal from "./Meal";
 
 const Meals = () => {
   const { meals } = useGlobalContext();
-  // console.log(meals);
 
-  if (meals.length === 0 || !meals) {
+  if (meals.length > 0) {
     return (
       <section id="meals">
         <div className="container">
+          <h2 className="text-center mb-4">Meals</h2>
           <div className="row pt-4">
-            <h3 className="text-center">Sorry, no meals found! </h3>
+            {meals.map((meal) => {
+              const { idMeal: id } = meal;
+
+              return <Meal key={id} meal={meal} />;
+            })}
           </div>
         </div>
       </section>
@@ -22,13 +26,8 @@ const Meals = () => {
   return (
     <section id="meals">
       <div className="container">
-        <h2 className="text-center mb-4">Meals</h2>
         <div className="row pt-4">
-          {meals.map((meal) => {
-            const { idMeal: id } = meal;
-
-            return <Meal key={id} meal={meal} />;
-          })}
+          <h3 className="text-center">Sorry, no meal found! </h3>
         </div>
       </div>
     </section>
